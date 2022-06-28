@@ -1,0 +1,43 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+<!-- Masthead-->
+<header class="masthead">
+    <div class="container position-relative">
+        <div class="row justify-content-center">
+            <div class="col-xl-6">
+                <div class="text-center text-top text-white">
+                    <!-- Page heading-->
+                    <h2>Registros</h2>
+                    <form action="/AppCoder/verRegistros/" method="GET">
+
+                        <input type="number" name="planta" id="planta">
+                        
+                        <input type="submit" value="Mostrar Registros">
+                
+                    </form>
+                    {% if Rgt %}
+
+                    <p>Registros de Planta N°: {{planta}}</p>
+
+                    <ul>
+                    {% for i in Rgt %}
+                        <li> {{i.sereno}} </li>
+                        <li> {{i.planta}} </li>
+                        <li> {{i.fecha}} </li>
+                        <li> {{i.hora}} </li>
+                        <li> {{i.punto}} </li>
+                    {% endfor %}
+
+                    </ul>
+                
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+{% endblock %}

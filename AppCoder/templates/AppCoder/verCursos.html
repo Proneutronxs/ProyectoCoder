@@ -1,0 +1,48 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+<!-- Masthead-->
+<header class="masthead">
+    
+    <div class="container position-relative">
+        <div class="row justify-content-center">
+            <div class="col-xl-6">
+                <div class="text-center text-top text-white">
+                    <!-- Page heading-->
+                    <h2>Cursos</h2>
+                    
+                    <form action="verCursosDB/" method="GET">
+                        <input type="number" name="camada" id="camada">
+                        <input type="submit" name="submit" value="Mostrar Cursos">
+                    </form>
+                    {% if cursos %}
+                    {% for curso in cursos %}
+                    <table class="table table-dark table-striped">
+                        <thead>
+                          <tr>
+                            <th scope="col">id</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Camada</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">{{ curso.id }}</th>
+                            <td>{{ curso.nombre }}</td>
+                            <td>{{ curso.camada }}</td>
+                          </tr>
+                        </tbody>
+                    </table> 
+                    {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</header>
+
+{% endblock %}
